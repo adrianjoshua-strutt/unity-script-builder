@@ -13,9 +13,11 @@ public class ExecutableDestroyObject : Executable
         GameObject.Destroy(GameObject, Delay);
     }
 
-    public override string getFolder()
-    {
-        return "GameObject";
-    }
+    public override string Folder {
+        get{
 
+            return "GameObject";
+        }
+    }
+    
 }

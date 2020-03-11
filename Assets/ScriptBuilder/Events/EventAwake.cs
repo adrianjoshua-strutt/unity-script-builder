@@ -10,4 +10,10 @@ public class EventAwake : Event
             this.Invoke();
     }
 
+    public override string Folder {
+        get {
+            return "Misc";
+        }
+    }
+
 }

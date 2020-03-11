@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ExecutableList
+public class ExecutableList : DrawableScriptableObjectList<Executable>
 {
-
-    [SerializeField]
-    public Executable[] Executables;
-
+    public override string DisplayName
+    {
+        get
+        {
+            return "Executable";
+        }
+    }
 
 }

@@ -11,4 +11,12 @@ public class ExecutableDebugMessage : Executable
         Debug.Log(Message);       
     }
 
+    public override string Folder
+    {
+        get
+        {
+            return "Debugging";
+        }
+    }
+
 }

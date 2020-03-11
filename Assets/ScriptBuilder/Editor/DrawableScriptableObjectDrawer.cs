@@ -2,8 +2,8 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(ScriptableObject), true)]
-public class ScriptableObjectDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(DrawableScriptableObject), true)]
+public class DrawableScriptableObjectDrawer : PropertyDrawer
 {
     // Cached scriptable object editor
     private Editor editor = null;
@@ -28,6 +28,11 @@ public class ScriptableObjectDrawer : PropertyDrawer
             // Draw object properties
             if (!editor)
                 Editor.CreateCachedEditor(property.objectReferenceValue, null, ref editor);
+
+            if (!editor) {
+                return;
+            }
+
             editor.OnInspectorGUI();
 
             // Set indent back to what it was
