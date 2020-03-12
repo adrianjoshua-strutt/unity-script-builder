@@ -8,7 +8,6 @@ public class DrawableScriptableObjectEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-
         SerializedProperty serializedProperty = serializedObject.GetIterator();
         if (serializedProperty.NextVisible(true))
         {
@@ -17,7 +16,7 @@ public class DrawableScriptableObjectEditor : Editor
                 if (serializedProperty.name == "m_Script") {
                     continue;
                 }
-                EditorGUILayout.PropertyField(serializedObject.FindProperty(serializedProperty.name), true);
+                 EditorGUILayout.PropertyField(serializedObject.FindProperty(serializedProperty.name), true);
             }
             while (serializedProperty.NextVisible(false));
         }

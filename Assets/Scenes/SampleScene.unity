@@ -124,6 +124,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &73140002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e57d67c4894cda4091428a8a0b524bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 0}
+  Delay: 0
+--- !u!114 &338924338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ef3ca3baf27ae4986cc193549a0ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExecuteOnInvoke:
+    Items:
+    - {fileID: 795853778}
+    - {fileID: 73140002}
 --- !u!1 &580662162
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +341,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &859302429
+--- !u!114 &795853778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56042ad91ff64a64dae2db57f97604c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Message: 
+  Message: Hallo !
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,21 +437,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1112683970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48ef3ca3baf27ae4986cc193549a0ad8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ExecuteOnInvoke:
-    Items:
-    - {fileID: 859302429}
 --- !u!1 &1347575782
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,4 +547,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Events:
     Items:
-    - {fileID: 1112683970}
+    - {fileID: 338924338}
+    - {fileID: 1975658393}
+--- !u!114 &1975658393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventOnEnable
+  ExecuteOnInvoke:
+    Items: []
