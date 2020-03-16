@@ -14,6 +14,12 @@ public static class Reflection
         return (T)propertyInfo.GetValue(obj);
     }
 
+    public static T SerializedPropertyGetPropertyValue<T>(UnityEngine.Object obj, string propertyName)
+    {
+        PropertyInfo propertyInfo = obj.GetType().GetProperty(propertyName);
+        return (T)propertyInfo.GetValue(obj);
+    }
+
     public static System.Type SerializedPropertyGetType(SerializedProperty property)
     {
         System.Type parentType = property.serializedObject.targetObject.GetType();

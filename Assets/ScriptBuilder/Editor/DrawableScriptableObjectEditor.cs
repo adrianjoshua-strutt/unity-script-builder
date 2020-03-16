@@ -4,7 +4,6 @@ using UnityEditor;
 [CustomEditor(typeof(DrawableScriptableObject), true)]
 public class DrawableScriptableObjectEditor : Editor
 {
-
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
@@ -13,10 +12,11 @@ public class DrawableScriptableObjectEditor : Editor
         {
             do
             {
-                if (serializedProperty.name == "m_Script") {
+                if (serializedProperty.name == "m_Script")
+                {
                     continue;
                 }
-                 EditorGUILayout.PropertyField(serializedObject.FindProperty(serializedProperty.name), true);
+                EditorGUILayout.PropertyField(serializedObject.FindProperty(serializedProperty.name), true);
             }
             while (serializedProperty.NextVisible(false));
         }

@@ -4,16 +4,12 @@ using UnityEditor;
 using System.Collections.Generic;
 using System;
 using System.Reflection;
+using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 
 [CustomPropertyDrawer(typeof(DrawableScriptableObjectList<>), true)]
 public class DrawableScriptableObjectListDrawer : PropertyDrawer
 {
-
-
-    /// <summary>
-    /// BUG
-    /// https://answers.unity.com/questions/661360/finally-a-solution-cant-use-guilayout-stuff-in-pro.html
-    /// </summary>
 
     public int index = 0;
 
@@ -28,16 +24,21 @@ public class DrawableScriptableObjectListDrawer : PropertyDrawer
     int selectedIndex = -1;
 
     int buttonHeight = 25;
-    
+
     GenericMenu itemSelectPopup;
     GenericMenu itemSelectPopupToShow;
     int itemSelectedPopup = -1;
 
-    SerializedProperty items; 
+    SerializedProperty items;
 
+   //BUG !!! Wenn eine Executable Klasse gelöscht wird, dann funktioniert es nicht mehr. Das Executable besteht weiter in der LIste, kann aber nicht mehr geladen
+   //werden da die Klasse nicht mehr existiert 
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+        if (ItemsType == null || allItemsAsString == null || allItems.Count == 0) {
+            UpdateItems(property);
+        }
         items = property.FindPropertyRelative("Items");
         Color colorOld;
         EditorGUILayout.BeginHorizontal();
@@ -49,43 +50,57 @@ public class DrawableScriptableObjectListDrawer : PropertyDrawer
                     SerializedProperty serializedProperty = items.GetArrayElementAtIndex(i);
                     EditorGUILayout.BeginHorizontal();
                     {
-                        bool selected = selectedIndex == i;
                         colorOld = GUI.backgroundColor;
-                        if (selected)
+                        if (serializedProperty.objectReferenceValue == null)
                         {
-                            GUI.backgroundColor = Color.gray;
+                            GUI.backgroundColor = Color.red;
+                            if (GUILayout.Button("Class not found!", GUILayout.Height(buttonHeight)))
+                            {
+                            }
+                            if (GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(buttonHeight)))
+                            {
+                                items.DeleteArrayElementAtIndex(i);
+                            }
+                            GUI.backgroundColor = colorOld;
                         }
-                        if (GUILayout.Button(Reflection.SerializedPropertyGetPropertyValue<String>(serializedProperty, "Name"), GUILayout.Height(buttonHeight), GUILayout.ExpandHeight(false)))
-                        {
+                        else {
+                            bool selected = selectedIndex == i;
                             if (selected)
                             {
+                                GUI.backgroundColor = Color.gray;
+                            }
+                            if (GUILayout.Button(Reflection.SerializedPropertyGetPropertyValue<String>(serializedProperty.objectReferenceValue, "Name"), GUILayout.Height(buttonHeight), GUILayout.ExpandHeight(false)))
+                            {
+                                if (selected)
+                                {
+                                    selectedProperty = null;
+                                    selectedIndex = -1;
+                                }
+                                else
+                                {
+                                    selectedProperty = serializedProperty;
+                                    selectedIndex = i;
+                                }
+                            }
+                            GUI.backgroundColor = Color.red;
+                            if (GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(buttonHeight)))
+                            {
+                                items.DeleteArrayElementAtIndex(i);
+                                items.DeleteArrayElementAtIndex(i);
                                 selectedProperty = null;
                                 selectedIndex = -1;
                             }
-                            else
-                            {
-                                selectedProperty = serializedProperty;
-                                selectedIndex = i;
-                            }
+                            GUI.backgroundColor = colorOld;
                         }
-                        GUI.backgroundColor = Color.red;
-                        if (GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(buttonHeight)))
-                        {
-                            items.DeleteArrayElementAtIndex(i);
-                            items.DeleteArrayElementAtIndex(i);
-                            selectedProperty = null;
-                            selectedIndex = -1;
-                        }
-                        GUI.backgroundColor = colorOld;
                     }
                     EditorGUILayout.EndHorizontal();
                 }
 
                 colorOld = GUI.backgroundColor;
                 GUI.backgroundColor = Color.green;
-                UpdateItems(property);
                 if (GUILayout.Button("Add " + ItemsType.Name, GUILayout.Height(buttonHeight)))
                 {
+                    UpdateItems(property);
                     itemSelectPopupToShow = itemSelectPopup;
                 }
                 GUI.backgroundColor = colorOld;
@@ -102,14 +117,20 @@ public class DrawableScriptableObjectListDrawer : PropertyDrawer
             {
                 if (selectedProperty != null)
                 {
-                    EditorGUILayout.PropertyField(selectedProperty, true, GUILayout.ExpandHeight(false));
+                    EditorGUI.PropertyField(position, selectedProperty, true);
                 }
             }
             EditorGUILayout.EndVertical();
 
         }
         EditorGUILayout.EndHorizontal();
+       
+    }
 
+    //http://answers.unity.com/comments/1495747/view.html
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return -4f; // this seems to match closest to non-property drawer version
     }
 
     void PopupCallback(object obj)

@@ -124,21 +124,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &73140002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e57d67c4894cda4091428a8a0b524bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameObject: {fileID: 0}
-  Delay: 0
---- !u!114 &338924338
+--- !u!114 &136589529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,8 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExecuteOnInvoke:
     Items:
-    - {fileID: 795853778}
-    - {fileID: 73140002}
+    - {fileID: 1858039007}
 --- !u!1 &580662162
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -341,19 +327,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &795853778
+--- !u!114 &705507996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56042ad91ff64a64dae2db57f97604c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1757d65e8837c2941ba42b492e040fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Message: Hallo !
+  Events:
+    Items:
+    - {fileID: 136589529}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +437,6 @@ GameObject:
   - component: {fileID: 1347575785}
   - component: {fileID: 1347575784}
   - component: {fileID: 1347575783}
-  - component: {fileID: 1347575787}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -533,23 +520,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1347575787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347575782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1757d65e8837c2941ba42b492e040fe1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Events:
-    Items:
-    - {fileID: 338924338}
-    - {fileID: 1975658393}
---- !u!114 &1975658393
+--- !u!114 &1858039007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -558,8 +529,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 66dbaef3a397afa4089b1b5276a1bfb4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EventOnEnable
-  ExecuteOnInvoke:
-    Items: []
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
+  AnimationName: 
+  Value: 0
