@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,14 @@ public abstract class Event : DrawableScriptableObject
         }
         foreach (Executable executable in ExecuteOnInvoke.Items)
         {
-            executable.Invoke();
+            try
+            {
+                executable.Invoke();
+                executable.ThrownException = "";
+            }
+            catch (Exception ex) {
+                executable.ThrownException = ex.Message;
+            }
         }
     }
 

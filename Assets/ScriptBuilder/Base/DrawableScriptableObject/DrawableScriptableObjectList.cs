@@ -16,7 +16,7 @@ public class DrawableScriptableObjectList<T> where T : DrawableScriptableObject
             return typeof(T).Name;
         }
     }
-
+    
     public virtual Type ObjectType
     {
         get
@@ -24,5 +24,11 @@ public class DrawableScriptableObjectList<T> where T : DrawableScriptableObject
             return typeof(T);
         }
     }
+
+    public virtual int ButtonHeight { get; set; } = 25;
+
+    public virtual bool AllowUserToAddItems { get; set; } = true;
+
+    public virtual bool AllowUserToRemoveItems { get; set; } = true;
 
 }

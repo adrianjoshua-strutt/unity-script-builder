@@ -7,7 +7,7 @@ public class ScriptBuilder : MonoBehaviour
 {
 
     [SerializeField]
-    public DrawableScriptableObjectList<Event> Events = new DrawableScriptableObjectList<Event>();
+    public EventList Events = new EventList();
 
 
 }

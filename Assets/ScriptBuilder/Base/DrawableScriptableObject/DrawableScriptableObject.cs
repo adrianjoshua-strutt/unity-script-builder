@@ -45,5 +45,31 @@ public class DrawableScriptableObject : ScriptableObject
             }
         }
     }
+    public virtual string DisplayName
+    {
+        get
+        {
+            return StringHelper.SplitCamelCase(Name);
+        }
+    }
+
+    private Color _buttonColorDefault = new Color(1, 1, 1);
+    public virtual Color ButtonColorDefault
+    {
+        get
+        {
+            return _buttonColorDefault;
+        }
+    }
+
+    private Color _buttonColorSelected = Color.gray;
+    public virtual Color ButtonColorSelected
+    {
+        get
+        {
+            return _buttonColorSelected;
+        }
+    }
+
 
 }
