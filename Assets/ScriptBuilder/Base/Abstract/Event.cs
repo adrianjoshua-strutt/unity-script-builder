@@ -23,6 +23,7 @@ public abstract class Event : DrawableScriptableObject
             }
             catch (Exception ex) {
                 executable.ThrownException = ex.Message;
+                Debug.LogException(ex);
             }
         }
     }
