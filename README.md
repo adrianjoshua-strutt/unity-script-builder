@@ -18,4 +18,4 @@ This projects involves heavy use of ScriptableObjects and many edge cases
 
 ### Deleting a cube after 3 seconds and printing "test" to the console
 
-![Deleting a cube after 3 seconds and printing "test" to the console](./docs/preview.gif?raw=true "Deleting a cube after 3 seconds and printing test to the console")
+![Deleting a cube after 3 seconds and printing "test" to the console](./Docs/preview.gif?raw=true "Deleting a cube after 3 seconds and printing test to the console")
