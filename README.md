@@ -8,6 +8,8 @@ You can easily add events and so called executables to any gameobject. Executabl
 The executables are are found in the folder `/Assets/ScriptBuilder/Executable/`
 Events can be added in `/Assets/ScriptBuilder/Events/`
 
+Note: This is only a proof and concept for educational purposes. Most of the Unity Events are not covered, and would need to be added manually.
+
 # Key Takeaways
 ### Use the Unity `PropertyDrawer` Class
 Using this class allows for custom editor extensions. 
